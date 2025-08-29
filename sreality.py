@@ -3,6 +3,10 @@ import sqlite3
 from pandas import DataFrame
 
 st.title('Sreality data🏠')
+st.set_page_config(
+    page_title="Sreality Data pronájmů",
+    page_icon="🏠",
+)
 
 def add_street_and_town(df):
     "https://www.sreality.cz/detail/pronajem/byt/5+kk/praha-kolovraty-medunkova/3809104460"
@@ -57,9 +61,9 @@ with st.sidebar:
     unique_address = st.checkbox("Zobrazovat jen unikátní adresu")
 
 df = load_data()
-filter = filter_data_rentier(df,rentier)
-st.metric("Počet řádků v tabulce", len(filter.index))
-st.dataframe(filter)
+filtered = filter_data_rentier(df,rentier)
+st.metric("Počet řádků v tabulce", len(filtered.index))
+st.dataframe(filtered)
 #st.data_editor(data)
 #t.subheader(map)
 #st.map(data)
